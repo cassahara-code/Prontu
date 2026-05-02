@@ -1,20 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
-  <url>
-    <loc>https://prontuassessoria.com.br/</loc>
-    <lastmod>2026-05-02</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>1.0</priority>
-    <image:image>
-      <image:loc>https://prontuassessoria.com.br/assets/prontu-logo-full-transparent.png</image:loc>
-      <image:title>Prontu! Assessoria em Gestão</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://prontuassessoria.com.br/assets/fundadora.jpeg</image:loc>
-      <image:title>Laiza Barros, fundadora da Prontu!</image:title>
-    </image:image>
-  </url>
+  <!-- Raiz "/" temporariamente removida — site em construção (noindex). Restaurar antes do lançamento. -->
   <url>
     <loc>https://prontuassessoria.com.br/sobre.html</loc>
     <lastmod>2026-05-02</lastmod>
