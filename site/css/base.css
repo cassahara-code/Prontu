@@ -447,6 +447,10 @@ a.trust-strip__name--link:hover {
   font-weight: var(--fw-regular);
   margin: 0 0 14px;
   line-height: 1.15;
+  color: var(--azul-profundo);
+}
+.service-card--featured .service-card__title {
+  color: var(--fg-on-dark);
 }
 .service-card__audience {
   font-family: var(--font-display);
