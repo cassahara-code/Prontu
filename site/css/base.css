@@ -448,6 +448,16 @@ a.trust-strip__name--link:hover {
   margin: 0 0 14px;
   line-height: 1.15;
 }
+.service-card__audience {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 16px;
+  line-height: 1.45;
+  color: var(--neutral-600);
+  margin: 0 0 18px;
+}
+.service-card--featured .service-card__audience { color: rgba(255, 255, 255, 0.78); }
+
 .service-card__body {
   font-size: 15px;
   line-height: 1.6;
@@ -455,6 +465,21 @@ a.trust-strip__name--link:hover {
   margin-bottom: 22px;
 }
 .service-card--featured .service-card__body { color: rgba(255, 255, 255, 0.78); }
+
+.service-card__highlight {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 16px;
+  line-height: 1.45;
+  color: var(--azul-profundo);
+  border-left: 2px solid var(--dourado-premium);
+  padding-left: 16px;
+  margin: 0 0 28px;
+}
+.service-card--featured .service-card__highlight {
+  color: var(--fg-on-dark);
+  border-left-color: var(--dourado-400);
+}
 .service-card__list {
   list-style: none;
   padding: 0;
