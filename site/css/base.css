@@ -340,12 +340,14 @@ p { margin: 0; text-wrap: pretty; }
 }
 a.trust-strip__name--link {
   text-decoration: none;
-  border-bottom: 1px solid transparent;
+  color: var(--azul-profundo);
+  border-bottom: 1px solid var(--dourado-premium);
+  padding-bottom: 2px;
   transition: color var(--t-base), border-color var(--t-base);
 }
 a.trust-strip__name--link:hover {
-  color: var(--azul-profundo);
-  border-bottom-color: var(--dourado-premium);
+  color: var(--azul-800);
+  border-bottom-color: var(--dourado-400);
 }
 
 /* ----- Grid ----- */
