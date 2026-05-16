@@ -693,7 +693,7 @@ a.trust-strip__name--link:hover {
 }
 .site-footer__grid {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
   gap: 48px;
   padding-bottom: 56px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.12);
