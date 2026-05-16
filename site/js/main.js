@@ -83,6 +83,14 @@
     };
     const hideError = () => { if (errorBox) errorBox.hidden = true; };
 
+    const resetFormState = () => {
+      form.reset();
+      submitBtn.disabled = false;
+      if (submitLabel) submitLabel.textContent = 'Enviar mensagem';
+      if (submitIcon) submitIcon.style.display = '';
+      hideError();
+    };
+
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
       hideError();
@@ -120,6 +128,19 @@
         if (submitIcon) submitIcon.style.display = '';
       }
     });
+
+    // Botão "Enviar nova mensagem" no card de sucesso
+    const resetBtn = document.querySelector('[data-contact-reset]');
+    if (resetBtn && successCard) {
+      resetBtn.addEventListener('click', () => {
+        successCard.hidden = true;
+        form.hidden = false;
+        resetFormState();
+        // Foca no primeiro campo para retomada imediata
+        const firstInput = form.querySelector('input, textarea');
+        if (firstInput) firstInput.focus();
+      });
+    }
   }
 
   // ----- Lucide icons -----
