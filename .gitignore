@@ -28,6 +28,10 @@ yarn-error.log*
 .env.local
 .env.*.local
 
+# Credenciais SMTP (produção apenas — replicar manualmente no servidor)
+site/config.php
+site/.rate_limit.json
+
 # Build output (caso venha a usar)
 dist/
 build/

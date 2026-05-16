@@ -229,32 +229,37 @@
           </div>
 
           <div>
-            <form class="form-card" data-contact-form>
+            <form class="form-card" data-contact-form action="enviar.php" method="POST" novalidate>
+              <!-- Honeypot anti-spam: invisível para humanos, visível para bots -->
+              <div style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;" aria-hidden="true">
+                <label>Não preencher: <input type="text" name="website" tabindex="-1" autocomplete="off" /></label>
+              </div>
               <div class="field-row">
                 <label class="field">
                   <span class="field__label">Nome</span>
-                  <input class="field__input" type="text" name="name" placeholder="Maria Almeida" required />
+                  <input class="field__input" type="text" name="name" placeholder="Maria Almeida" required maxlength="120" />
                 </label>
                 <label class="field">
                   <span class="field__label">E-mail</span>
-                  <input class="field__input" type="email" name="email" placeholder="maria@clinica.com" required />
+                  <input class="field__input" type="email" name="email" placeholder="maria@clinica.com" required maxlength="160" />
                 </label>
               </div>
               <label class="field">
                 <span class="field__label">Clínica ou negócio</span>
-                <input class="field__input" type="text" name="clinic" placeholder="Clínica Vida+" required />
+                <input class="field__input" type="text" name="clinic" placeholder="Clínica Vida+" required maxlength="200" />
               </label>
               <label class="field">
                 <span class="field__label">Telefone</span>
-                <input class="field__input" type="tel" name="phone" placeholder="(00) 00000-0000" required />
+                <input class="field__input" type="tel" name="phone" placeholder="(00) 00000-0000" required maxlength="40" />
               </label>
               <label class="field">
                 <span class="field__label">Onde dói mais hoje?</span>
-                <textarea class="field__textarea" name="message" placeholder="Conta um pouco. Sem roteiro." required></textarea>
+                <textarea class="field__textarea" name="message" placeholder="Conta um pouco. Sem roteiro." required maxlength="5000"></textarea>
               </label>
+              <div data-contact-error hidden style="background: var(--danger-bg, #F7E4E2); color: var(--danger, #B83232); border-radius: var(--r-md); padding: 12px 16px; margin-bottom: 16px; font-size: 14px;"></div>
               <button class="btn btn--primary btn--lg" type="submit" style="width: 100%; justify-content: center;">
-                Enviar mensagem
-                <i data-lucide="arrow-right"></i>
+                <span data-submit-label>Enviar mensagem</span>
+                <i data-lucide="arrow-right" data-submit-icon></i>
               </button>
             </form>
 

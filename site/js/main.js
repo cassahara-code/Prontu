@@ -67,22 +67,58 @@
     start();
   }
 
-  // ----- Formulário de contato (envio simulado) -----
+  // ----- Formulário de contato (envio real via enviar.php) -----
   const form = document.querySelector('[data-contact-form]');
   if (form) {
-    form.addEventListener('submit', (e) => {
+    const submitBtn = form.querySelector('[type="submit"]');
+    const submitLabel = form.querySelector('[data-submit-label]');
+    const submitIcon = form.querySelector('[data-submit-icon]');
+    const errorBox = form.querySelector('[data-contact-error]');
+    const successCard = document.querySelector('[data-contact-success]');
+
+    const showError = (msg) => {
+      if (!errorBox) return;
+      errorBox.textContent = msg;
+      errorBox.hidden = false;
+    };
+    const hideError = () => { if (errorBox) errorBox.hidden = true; };
+
+    form.addEventListener('submit', async (e) => {
       e.preventDefault();
-      const submitBtn = form.querySelector('[type="submit"]');
-      const successCard = document.querySelector('[data-contact-success]');
-      if (!submitBtn || !successCard) return;
+      hideError();
+
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
 
       submitBtn.disabled = true;
-      submitBtn.textContent = 'Enviando…';
+      if (submitLabel) submitLabel.textContent = 'Enviando…';
+      if (submitIcon) submitIcon.style.display = 'none';
 
-      setTimeout(() => {
-        form.hidden = true;
-        successCard.hidden = false;
-      }, 800);
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' },
+        });
+        const data = await res.json().catch(() => ({ ok: false, error: 'Resposta inválida do servidor.' }));
+
+        if (res.ok && data.ok) {
+          form.hidden = true;
+          if (successCard) successCard.hidden = false;
+        } else {
+          showError(data.error || 'Não conseguimos enviar agora. Tente novamente.');
+          submitBtn.disabled = false;
+          if (submitLabel) submitLabel.textContent = 'Enviar mensagem';
+          if (submitIcon) submitIcon.style.display = '';
+        }
+      } catch (err) {
+        showError('Erro de conexão. Verifique sua internet e tente novamente.');
+        submitBtn.disabled = false;
+        if (submitLabel) submitLabel.textContent = 'Enviar mensagem';
+        if (submitIcon) submitIcon.style.display = '';
+      }
     });
   }
 
