@@ -76,6 +76,20 @@
     const errorBox = form.querySelector('[data-contact-error]');
     const successCard = document.querySelector('[data-contact-success]');
 
+    // Pré-preenche mensagem quando o usuário vem de um card de serviço (?s=KEY)
+    const SERVICO_NOMES = {
+      auditoria:      'Auditoria e Diagnóstico Operacional',
+      gestao:         'Gestão Operacional na Prática',
+      acompanhamento: 'Acompanhamento Contínuo',
+    };
+    const servicoKey = new URLSearchParams(window.location.search).get('s');
+    if (servicoKey && SERVICO_NOMES[servicoKey]) {
+      const msgField = form.querySelector('[name="message"]');
+      if (msgField && !msgField.value) {
+        msgField.value = `Olá, estou interessado no serviço ${SERVICO_NOMES[servicoKey]}.`;
+      }
+    }
+
     const showError = (msg) => {
       if (!errorBox) return;
       errorBox.textContent = msg;
