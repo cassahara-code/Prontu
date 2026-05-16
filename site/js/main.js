@@ -129,19 +129,19 @@
       }
     });
 
-    // Botão "Enviar nova mensagem" no card de sucesso
-    const resetBtn = document.querySelector('[data-contact-reset]');
-    if (resetBtn && successCard) {
-      resetBtn.addEventListener('click', () => {
-        successCard.hidden = true;
-        form.hidden = false;
-        resetFormState();
-        // Foca no primeiro campo para retomada imediata
-        const firstInput = form.querySelector('input, textarea');
-        if (firstInput) firstInput.focus();
-      });
-    }
   }
+
+  // Botão "Enviar nova mensagem" no card de sucesso — recarrega a página
+  // com âncora #contato-form para já cair direto no formulário.
+  // Event delegation no document garante que o handler funcione mesmo que
+  // o ícone Lucide substitua a estrutura interna do botão.
+  document.addEventListener('click', (e) => {
+    const btn = e.target.closest('[data-contact-reset]');
+    if (!btn) return;
+    e.preventDefault();
+    window.location.hash = 'contato-form';
+    window.location.reload();
+  });
 
   // ----- Lucide icons -----
   if (window.lucide && typeof window.lucide.createIcons === 'function') {
